@@ -1,20 +1,19 @@
 @use "sass:map";
 @import "style/pages/theme";
 
-
 .header_top {
     background: #f5f5f5;
 }
 
 .header_top_left {
-    ul{
+    ul {
         display: flex;
         align-items: center;
         padding: 10px 0 13px;
         list-style: none;
         column-gap: 20px;
 
-        li{
+        li {
             font-size: 14px;
             color: map.get($theme-colors, "normal-text");
             display: flex;
@@ -24,8 +23,9 @@
 
         li:first-child {
             position: relative;
-             &:after {
-                position:absolute;
+
+            &:after {
+                position: absolute;
                 right: -10px;
                 top: 1px;
                 height: 20px;
@@ -33,13 +33,12 @@
                 background: #000000;
                 opacity: 0.1;
                 content: "";
-             }
+            }
         }
-
     }
 }
 
-.header_top_right{
+.header_top_right {
     display: flex;
     justify-content: flex-end;
     align-items: center;
@@ -54,43 +53,128 @@
             font-size: 14px;
             display: inline-block;
             color: map.get($theme-colors, "normal-text");
+            transition: all 0.3s ease-in-out;
+
+            &:hover {
+                color: map.get($theme-colors, "main");
+                transform: scale(1.1);
+            }
         }
 
         li:last-child {
             cursor: pointer;
             margin-left: 10px;
-            display: flex;  // Thêm dòng này để căn giữa icon và chữ
-            align-items: center; // Căn giữa theo chiều dọc
-        
+            display: flex;
+            align-items: center;
+
             span {
                 font-size: 14px;
-                margin-left: 5px; // Tăng khoảng cách giữa icon và chữ nếu cần
+                margin-left: 5px;
             }
         }
     }
 }
 
-.header_cart{
+.header_logo {
+    padding: 10px 0;
+    
+}
+
+.header_menu {
+    padding: 24px 0;
+
+    ul {
+        display: flex;
+        justify-content: space-between;
+
+        li {
+            list-style: none;
+            position: relative;
+
+            a {
+                text-decoration: none;
+                font-size: 14px;
+                color: map.get($theme-colors, "bold-text");
+                text-transform: uppercase;
+                font-weight: bold;
+                letter-spacing: 2px;
+                transition: all 0.3s;
+                padding: 5px 0;
+                display: block;
+            }
+        }
+
+        li:hover .header_menu_dropdown {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(5px);
+        }
+
+        .active a {
+            color: map.get($theme-colors, "main");
+        }
+
+        .header_menu_dropdown {
+            background: #222222;
+            position: absolute;
+            width: 180px;
+            z-index: 9;
+            padding: 5px 0;
+            transition: all 0.3s;
+            opacity: 0;
+            visibility: hidden;
+            top: 100%;
+            left: 0;
+            border-radius: 5px;
+            display: block; // Đảm bảo menu hiển thị dạng block
+        
+            li {
+                display: block; // Hiển thị từng mục thành 1 dòng
+                padding: 5px 15px;
+        
+                a {
+                    text-transform: capitalize;
+                    color: #ffffff;
+                    font-weight: 400;
+                    padding: 5px 0;
+                    display: block;
+                }
+        
+                &:hover a {
+                    color: map.get($theme-colors, "main");
+                }
+            }
+        }
+    }
+}
+
+.header_cart {
     display: flex;
     justify-content: center;
     align-items: center;
     padding: 20px 0;
 
-    ul{
+    ul {
         display: flex;
         margin-right: 25px;
 
-        li{
+        li {
             list-style: none;
             position: relative;
             margin-left: 20px;
 
-            svg{
+            svg {
                 font-size: 30px;
                 color: map.get($theme-colors, "normal-text");
+                transition: all 0.3s ease-in-out;
+
+                &:hover {
+                    color: map.get($theme-colors, "main");
+                    transform: scale(1.1);
+                }
             }
 
-            span{
+            span {
                 color: white;
                 background: map.get($theme-colors, "main");
                 position: absolute;

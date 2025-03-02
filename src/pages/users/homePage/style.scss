@@ -2,193 +2,193 @@
 @import "style/pages/_all";
 
 .container_categories_slider {
-    max-width: 1200px !important;
-    margin-top: 30px !important;
+  max-width: 1200px !important;
+  margin-top: 30px !important;
 
-    .categories_slider {
-        .categories_slider_item {
-            height: 300px;
-            position: relative;
-            background-repeat: no-repeat;
-            background-size: cover;
-            background-position: top center;
-            border-radius: 5px;
+  .categories_slider {
+    .categories_slider_item {
+      height: 300px;
+      position: relative;
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: top center;
+      border-radius: 5px;
 
-            p {
-                position: absolute;
-                left: 5%;
-                bottom: 20px;
-                text-align: center;
-                font-size: 18px;
-                color: map.get($theme-colors, "normal-text");
-                font-weight: 700;
-                text-transform: uppercase;
-                letter-spacing: 2px;
-                padding: 12px 0 10px;
-                width: 270px;
-                cursor: pointer;
+      p {
+        position: absolute;
+        left: 5%;
+        bottom: 20px;
+        text-align: center;
+        font-size: 18px;
+        color: map.get($theme-colors, "normal-text");
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        padding: 12px 0 10px;
+        width: 270px;
+        cursor: pointer;
 
-                &:hover {
-                    background: rgb(237 237 237);
-                }
-            }
+        &:hover {
+          background: rgb(237 237 237);
         }
-
-        .react-multi-carousel-item:not(:first-child):not(:last-child) {
-            margin-left: 5px;
-            margin-right: 5px;
-        }
+      }
     }
+
+    .react-multi-carousel-item:not(:first-child):not(:last-child) {
+      margin-left: 5px;
+      margin-right: 5px;
+    }
+  }
 }
 
 .featured {
-    margin-top: 50px;
+  margin-top: 50px;
 
-    .section-title {
-        text-align: center;
-        margin-bottom: 50px;
+  .section-title {
+    text-align: center;
+    margin-bottom: 50px;
 
-        h2 {
-            position: relative;
-        }
-
-        h2:after {
-            position: absolute;
-            left: 0;
-            bottom: -15px;
-            right: 0;
-            height: 4px;
-            width: 80px;
-            background: map.get($theme-colors, "main");
-            content: "";
-            margin: 0 auto;
-        }
+    h2 {
+      position: relative;
     }
 
-    .react-tabs {
-        ul {
-            display: flex;
-            justify-content: center;
-            margin-bottom: 50px;
-        }
+    h2:after {
+      position: absolute;
+      left: 0;
+      bottom: -15px;
+      right: 0;
+      height: 4px;
+      width: 80px;
+      background: map.get($theme-colors, "main");
+      content: "";
+      margin: 0 auto;
+    }
+  }
+
+  .react-tabs {
+    ul {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 50px;
+    }
+
+    li {
+      list-style: none;
+      font-size: 18px;
+      color: map.get($theme-colors, "normal-text");
+      display: inline-block;
+      margin-right: 25px;
+      position: relative;
+      cursor: pointer;
+      padding: 10px 15px;
+      border: 2px solid transparent; // Viền mặc định trong suốt
+      border-radius: 5px; // Bo góc nhẹ
+      transition: all 0.3s ease-in-out;
+
+      &:hover {
+        color: #7fad39;
+      }
+    }
+
+    // ✅ Khi tab được chọn (sử dụng class "react-tabs__tab--selected" mặc định của React Tabs)
+    .react-tabs__tab--selected {
+      color: #ffffff;
+      background-color: #7fad39;
+      border-color: #7fad39;
+      font-weight: bold;
+    }
+  }
+
+  .featured_item {
+    margin-bottom: 50px;
+    position: relative;
+
+    &:hover {
+      .featured_item_pic_hover {
+        bottom: 10px !important; // Hiển thị khi hover
+      }
+    }
+
+    .featured_item_pic {
+      height: 400px; // Điều chỉnh chiều cao hợp lý hơn
+      position: relative;
+      overflow: hidden;
+      background-size: cover; // Đảm bảo ảnh không bị méo
+      background-position: center center;
+      border-radius: 8px; // Bo góc nhẹ để mềm mại hơn
+
+      ul {
+        position: absolute;
+        left: 50%;
+        bottom: -50px; // Ẩn ban đầu
+        transform: translateX(-50%);
+        width: 100%;
+        text-align: center;
+        transition: all 0.3s ease-in-out;
+        opacity: 0;
 
         li {
-            list-style: none;
-            font-size: 18px;
-            color: map.get($theme-colors, "normal-text");
-            display: inline-block;
-            margin-right: 25px;
-            position: relative;
-            cursor: pointer;
-            padding: 10px 15px;
-            border: 2px solid transparent; // Viền mặc định trong suốt
-            border-radius: 5px; // Bo góc nhẹ
+          list-style: none;
+          display: inline-block;
+          margin-right: 10px;
+
+          svg {
+            font-size: 20px; // Kích thước icon
+            color: #333; // Màu mặc định
+            background: #ffffff; // Nền trắng
+            border: 2px solid #ddd; // ✅ Thêm viền giống ảnh mẫu
+            border-radius: 50%; // Làm tròn
+            padding: 10px;
             transition: all 0.3s ease-in-out;
+          }
 
-            &:hover {
-                color: #7fad39;
+          &:hover {
+            svg {
+              background: #7fad39; // ✅ Màu nền xanh lá khi hover
+              border-color: #7fad39;
+              color: #ffffff; // Icon màu trắng
+              transform: rotate(360deg) scale(1.1); // Hiệu ứng xoay + phóng to nhẹ
             }
+          }
         }
-
-        // ✅ Khi tab được chọn (sử dụng class "react-tabs__tab--selected" mặc định của React Tabs)
-        .react-tabs__tab--selected {
-            color: #ffffff;
-            background-color: #7fad39;
-            border-color: #7fad39;
-            font-weight: bold;
-        }
+      }
     }
 
-    .featured_item {
-        margin-bottom: 50px;
-        position: relative;
-
-        &:hover {
-            .featured_item_pic_hover {
-                bottom: 10px !important; // Hiển thị khi hover
-            }
-        }
-
-        .featured_item_pic {
-            height: 400px; // Điều chỉnh chiều cao hợp lý hơn
-            position: relative;
-            overflow: hidden;
-            background-size: cover; // Đảm bảo ảnh không bị méo
-            background-position: center center;
-            border-radius: 8px; // Bo góc nhẹ để mềm mại hơn
-
-            ul {
-                position: absolute;
-                left: 50%;
-                bottom: -50px; // Ẩn ban đầu
-                transform: translateX(-50%);
-                width: 100%;
-                text-align: center;
-                transition: all 0.3s ease-in-out;
-                opacity: 0;
-
-                li {
-                    list-style: none;
-                    display: inline-block;
-                    margin-right: 10px;
-
-                    svg {
-                        font-size: 20px; // Kích thước icon
-                        color: #333; // Màu mặc định
-                        background: #ffffff; // Nền trắng
-                        border: 2px solid #ddd; // ✅ Thêm viền giống ảnh mẫu
-                        border-radius: 50%; // Làm tròn
-                        padding: 10px;
-                        transition: all 0.3s ease-in-out;
-                    }
-
-                    &:hover {
-                        svg {
-                            background: #7fad39; // ✅ Màu nền xanh lá khi hover
-                            border-color: #7fad39;
-                            color: #ffffff; // Icon màu trắng
-                            transform: rotate(360deg) scale(1.1); // Hiệu ứng xoay + phóng to nhẹ
-                        }
-                    }
-                }
-            }
-        }
-
-        &:hover .featured_item_pic ul {
-            bottom: 10px; // Hiện khi hover
-            opacity: 1;
-        }
-
-        .featured_item_text {
-            text-align: center;
-
-            h6 {
-                margin-top: 10px;
-                font-size: 16px;
-                font-weight: 400;
-
-                a {
-                    color: map.get($theme-colors, 'normal-text');
-                    text-decoration: none;
-                }
-            }
-
-            h5 {
-                color: map.get($theme-colors, 'normal-text');
-                font-size: 18px;
-                font-weight: 700;
-                margin-top: 10px;
-            }
-        }
+    &:hover .featured_item_pic ul {
+      bottom: 10px; // Hiện khi hover
+      opacity: 1;
     }
+
+    .featured_item_text {
+      text-align: center;
+
+      h6 {
+        margin-top: 10px;
+        font-size: 16px;
+        font-weight: 400;
+
+        a {
+          color: map.get($theme-colors, "normal-text");
+          text-decoration: none;
+        }
+      }
+
+      h5 {
+        color: map.get($theme-colors, "normal-text");
+        font-size: 18px;
+        font-weight: 700;
+        margin-top: 10px;
+      }
+    }
+  }
 }
 
 .banner {
-    display: flex;
-    gap: 20px;
-    margin-bottom: 30px;
+  display: flex;
+  gap: 20px;
+  margin-bottom: 30px;
 
-    img {
-        width: 100%;
-    }
+  img {
+    width: 100%;
+  }
 }

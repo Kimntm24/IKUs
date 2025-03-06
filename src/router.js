@@ -3,6 +3,8 @@ import HomePage from "./pages/users/homePage";
 import { ROUTERS } from "./utils/router";
 import MasterLayout from "./pages/users/theme/masterLayout";
 import ProfilePage from "./pages/users/profilePage";
+import ProductsPage from "pages/users/productsPage";
+import ProductDetailPage from "pages/users/ProductDetailPage";
 
 const RouterCustom = () => {
     const userRouters = [
@@ -13,6 +15,14 @@ const RouterCustom = () => {
         {
             path: ROUTERS.USER.PROFILE,
             component: <ProfilePage />
+        },
+        {
+            path: ROUTERS.USER.PRODUCTS,
+            component: <ProductsPage />
+        },
+        {
+            path: ROUTERS.USER.PRODUCT,
+            component: <ProductDetailPage />
         },
     ];
 

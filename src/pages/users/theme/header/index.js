@@ -1,4 +1,4 @@
-import { memo, useState } from "react";
+import { memo, useEffect, useState } from "react";
 import "./style.scss";
 import { MdOutlineFacebook, MdOutlineWhereToVote } from "react-icons/md";
 import { FaInstagram, FaRegUser, FaTwitter } from "react-icons/fa";
@@ -11,13 +11,28 @@ import {
   AiOutlineShoppingCart,
   AiOutlineUpCircle,
 } from "react-icons/ai";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { ROUTERS } from "utils/router";
-import { formatter } from "utils/formater";
+//import { formatter } from "utils/formater";
+
+ export const categories = [
+  "Sách Kinh Tế",
+  "Sách Văn Học Trong Nước",
+  "Sách Văn Học Nước Ngoài",
+  "Sách Phát Triển Bản Thân",
+  "Sách Tin Học Ngoại Ngữ",
+  "Sách Chuyên Ngành",
+  "Sách Giáo Khoa - Giáo Trình",
+  "Sách Phát Hành 2024",
+  "Sách Mới 2025",
+  "Review Sách",
+];
 
 const Header = () => {
-  const [isShowCategories, setShowCategories] = useState(true);
+  const location = useLocation();
   const [isShowHumberger, setShowHumberger] = useState(false);
+  const [isHome, setIsHome] = useState(location.pathname.length <= 1);
+  const [isShowCategories, setShowCategories] = useState(isHome);
   const [menus, setMenus] = useState([
     {
       name: "Trang chủ",
@@ -46,6 +61,14 @@ const Header = () => {
       path: "",
     },
   ]);
+
+  
+
+  useEffect(() => {
+    const isHome = location.pathname.length <= 1;
+    setIsHome(isHome);
+    setShowCategories(isHome);
+  }, [location])
 
   return (
     <>
@@ -240,36 +263,13 @@ const Header = () => {
             </div>
 
             <ul className={isShowCategories ? "" : "hidden"}>
-              <li>
-                <Link to={"#"}>Sách Kinh Tế</Link>
-              </li>
-              <li>
-                <Link to={"#"}>Sách Văn Học Trong Nước</Link>
-              </li>
-              <li>
-                <Link to={"#"}>Sách Văn Học Nước Ngoài</Link>
-              </li>
-              <li>
-                <Link to={"#"}>Sách Phát Triển Bản Thân</Link>
-              </li>
-              <li>
-                <Link to={"#"}>Sách Tin Học Ngoại Ngữ</Link>
-              </li>
-              <li>
-                <Link to={"#"}>Sách Chuyên Ngành</Link>
-              </li>
-              <li>
-                <Link to={"#"}>Sách Giáo Khoa - Giáo Trình</Link>
-              </li>
-              <li>
-                <Link to={"#"}>Sách Phát Hàng 2024</Link>
-              </li>
-              <li>
-                <Link to={"#"}>Sách Mới 2025</Link>
-              </li>
-              <li>
-                <Link to={"#"}>Review Sách</Link>
-              </li>
+              {categories.map((category, key) =>(
+                 <li key={key}>
+                 <Link to={ROUTERS.USER.PRODUCTS}>{category}</Link>
+               </li>
+              ))}
+              
+              
             </ul>
           </div>
           <div className="col-lg-9 col-md-12 col-sm-12 col-xs-12 hero_search_container">
@@ -290,7 +290,8 @@ const Header = () => {
                 </div>
               </div>
             </div>
-            <div className="hero_item">
+            {isHome && (
+              <div className="hero_item">
               {/* <div className='hero_text'>
                                 <span>Ngày Hội Siêu Sale</span>
                                 <h2>Đồng Giảm <br/> 
@@ -301,6 +302,7 @@ const Header = () => {
                                        </Link>
                             </div> */}
             </div>
+            )}
           </div>
         </div>
       </div>

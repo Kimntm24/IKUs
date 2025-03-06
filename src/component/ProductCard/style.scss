@@ -1,0 +1,85 @@
+@use "sass:map";
+@import "style/pages/_all"; 
+
+.featured_item {
+    margin-bottom: 50px;
+    position: relative;
+
+    &:hover {
+      .featured_item_pic_hover {
+        bottom: 10px !important; // Hiển thị khi hover
+      }
+    }
+
+    .featured_item_pic {
+      height: 300px; // Điều chỉnh chiều cao hợp lý hơn
+      position: relative;
+      overflow: hidden;
+      background-size: cover; // Đảm bảo ảnh không bị méo
+      background-position: center center;
+      border-radius: 8px; // Bo góc nhẹ để mềm mại hơn
+
+      ul {
+        position: absolute;
+        left: 50%;
+        bottom: -50px; // Ẩn ban đầu
+        transform: translateX(-50%);
+        width: 100%;
+        text-align: center;
+        transition: all 0.3s ease-in-out;
+        opacity: 0;
+
+        li {
+          list-style: none;
+          display: inline-block;
+          margin-right: 10px;
+
+          svg {
+            font-size: 20px; // Kích thước icon
+            color: #333; // Màu mặc định
+            background: #ffffff; // Nền trắng
+            border: 2px solid #ddd; // ✅ Thêm viền giống ảnh mẫu
+            border-radius: 50%; // Làm tròn
+            padding: 10px;
+            transition: all 0.3s ease-in-out;
+          }
+
+          &:hover {
+            svg {
+              background: #7fad39; // ✅ Màu nền xanh lá khi hover
+              border-color: #7fad39;
+              color: #ffffff; // Icon màu trắng
+              transform: rotate(360deg) scale(1.1); // Hiệu ứng xoay + phóng to nhẹ
+            }
+          }
+        }
+      }
+    }
+
+    &:hover .featured_item_pic ul {
+      bottom: 10px; // Hiện khi hover
+      opacity: 1;
+    }
+
+    .featured_item_text {
+      text-align: center;
+
+      h6 {
+        margin-top: 10px;
+        font-size: 16px;
+        font-weight: 400;
+
+        a {
+          color: map.get($theme-colors, "normal-text");
+          text-decoration: none;
+        }
+      }
+
+      h5 {
+        color: map.get($theme-colors, "normal-text");
+        font-size: 18px;
+        font-weight: 700;
+        margin-top: 10px;
+      }
+    }
+  }

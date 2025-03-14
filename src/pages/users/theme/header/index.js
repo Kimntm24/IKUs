@@ -239,8 +239,8 @@ const Header = () => {
             <div className="header_cart">
               <ul>
                 <li>
-                  <Link to="">
-                    <AiOutlineShoppingCart /> <span>0</span>
+                  <Link to={ROUTERS.USER.SHOPPING_CART}>
+                    <AiOutlineShoppingCart /> <span>5</span>
                   </Link>
                 </li>
               </ul>

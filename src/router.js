@@ -5,6 +5,8 @@ import MasterLayout from "./pages/users/theme/masterLayout";
 import ProfilePage from "./pages/users/profilePage";
 import ProductsPage from "pages/users/productsPage";
 import ProductDetailPage from "pages/users/ProductDetailPage";
+import ShoppingCartPage from "pages/users/shoppingCartPage";
+import CheckoutPage from "pages/users/checkoutPage";
 
 const RouterCustom = () => {
     const userRouters = [
@@ -23,6 +25,14 @@ const RouterCustom = () => {
         {
             path: ROUTERS.USER.PRODUCT,
             component: <ProductDetailPage />
+        },
+        {
+            path: ROUTERS.USER.SHOPPING_CART,
+            component: <ShoppingCartPage />
+        },
+        {
+            path: ROUTERS.USER.CHECKOUT,
+            component: <CheckoutPage />
         },
     ];
 

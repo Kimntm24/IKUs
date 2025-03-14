@@ -1,5 +1,6 @@
 @use "sass:map";
 @import "style/pages/theme";
+@import "style/pages/all";
 
 .product_detail_pic {
     display: flex;
@@ -56,33 +57,90 @@
         }
     }
 }
-.product_detail_tab{
-    margin: 20px 20;
+.product_detail_tab {
+    margin-top: 30px;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    border: 1px solid #ddd;
 
-    h4{
+    h4 {
         text-align: center;
+        font-size: 22px;
+        font-weight: bold;
+        color: #333;
         position: relative;
         margin-bottom: 20px;
-        list-style: none;
 
-        &:after{
+        &::after, &::before {
             position: absolute;
-            right: 0;
             top: 12px;
-            height: 1px;
-            width: 43%;
-            background:  #ebebeb;
+            height: 2px;
+            width: 40%;
+            background: #ccc;
             content: "";
+
+            @include Responsive($MEDIUM_DEVICE) {
+                width: 40%;
+            }
+            @include Responsive($TABLET_DEVICE) {
+                width: 38%;
+            }
+            @include Responsive($WIDE_MOBILE) {
+                width: 34%;
+            }
+            @include Responsive($SMALL_DEVICES) {
+                width: 27%;
+            }
         }
 
-        &:before {
-            position: absolute;
+        &::before {
             left: 0;
-            top: 12px;
-            height: 1px;
-            width: 43%;
-            background:  #ebebeb;
-            content: "";
+        }
+
+        &::after {
+            right: 0;
+        }
+    }
+
+    ul {
+        list-style: none;
+        padding: 0;
+
+        li {
+            margin-bottom: 15px;
+            padding: 10px;
+            background: white;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            
+            p {
+                margin: 0;
+                line-height: 1.6;
+                font-size: 16px;
+                color: #555;
+            }
+        }
+    }
+
+    .product-info {
+        margin-top: 20px;
+        padding: 15px;
+        background: white;
+        border-radius: 5px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+        p {
+            font-size: 16px;
+            line-height: 1.6;
+            margin: 5px 0;
+            color: #333;
+
+            strong {
+                color: #000;
+                font-weight: bold;
+            }
         }
     }
 }
+

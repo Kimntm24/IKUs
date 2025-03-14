@@ -8,8 +8,7 @@ import { ROUTERS } from "utils/router";
 
 const ProductCard =({img, name, price}) =>{
     return (
-        <>
-                        <div className='featured_item pl-pr-10'>
+        <div className='featured_item pl-pr-10'>
                             <div className='featured_item_pic' style={{
                                 backgroundImage: `url(${img})`
                             }}>
@@ -29,7 +28,6 @@ const ProductCard =({img, name, price}) =>{
                                 <h5>{formatter(price)}</h5>
                             </div>
                         </div>
-        </>
     )
 }
 

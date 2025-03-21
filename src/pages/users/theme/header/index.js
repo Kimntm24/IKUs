@@ -11,7 +11,7 @@ import {
   AiOutlineShoppingCart,
   AiOutlineUpCircle,
 } from "react-icons/ai";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { ROUTERS } from "utils/router";
 //import { formatter } from "utils/formater";
 
@@ -29,6 +29,7 @@ import { ROUTERS } from "utils/router";
 ];
 
 const Header = () => {
+  const navigate = useNavigate();
   const location = useLocation();
   const [isShowHumberger, setShowHumberger] = useState(false);
   const [isHome, setIsHome] = useState(location.pathname.length <= 1);
@@ -195,7 +196,7 @@ const Header = () => {
                     <IoCall />
                   </Link>
                 </li>
-                <li>
+                <li onClick={() => navigate(ROUTERS.ADMIN.LOGIN)}>
                   <Link to="">
                     <FaRegUser />
                   </Link>{" "}

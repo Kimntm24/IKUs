@@ -1,14 +1,17 @@
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, useLocation } from "react-router-dom";
 import HomePage from "./pages/users/homePage";
-import { ROUTERS } from "./utils/router";
+import { ADMIN_PATH, ROUTERS } from "./utils/router";
 import MasterLayout from "./pages/users/theme/masterLayout";
 import ProfilePage from "./pages/users/profilePage";
 import ProductsPage from "pages/users/productsPage";
 import ProductDetailPage from "pages/users/ProductDetailPage";
 import ShoppingCartPage from "pages/users/shoppingCartPage";
 import CheckoutPage from "pages/users/checkoutPage";
+import LoginPage from "pages/admins/loginPage";
+import MasterAdLayout from "pages/admins/theme/masterAdLayout";
+import OrderPage from "pages/admins/orderPage";
 
-const RouterCustom = () => {
+const renderUserRouter = () => {
     const userRouters = [
         {
             path: ROUTERS.USER.HOME,
@@ -35,6 +38,8 @@ const RouterCustom = () => {
             component: <CheckoutPage />
         },
     ];
+    
+
 
     return (
         <MasterLayout>
@@ -45,6 +50,36 @@ const RouterCustom = () => {
         </Routes>
         </MasterLayout>
     );
+};
+
+const renderAdminRouter = () => {
+    const adminRouters = [
+        {
+            path: ROUTERS.ADMIN.LOGIN,
+            component: <LoginPage />
+        },
+        {
+            path: ROUTERS.ADMIN.ORDERS,
+            component: <OrderPage />
+        },
+        
+    ];
+    return (
+        <MasterAdLayout>
+        <Routes>
+            {adminRouters.map((item, key) => (
+                <Route key={key} path={item.path} element={item.component} />
+            ))}
+        </Routes>
+        </MasterAdLayout>
+    );
+};
+
+const RouterCustom = () => {
+    const location = useLocation();
+    const isAdminRouters = location.pathname.startsWith(ADMIN_PATH)
+
+    return isAdminRouters ? renderAdminRouter() : renderUserRouter();
 };
 
 export default RouterCustom;
